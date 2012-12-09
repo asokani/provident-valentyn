@@ -6,42 +6,42 @@ jQuery(document).ready(($) ->
     <form id="valentyn">
     <div style="float:left;">
       <div>
-        <p>Zadejte své <strong>zákaznické číslo</strong>:</p>
+        <p>Zadajte svoje <strong>zákaznícke číslo</strong>:</p>
         <input type="text" name="number" />
         </div>
         <div>
-        <p>Zadejte svou <strong>e-mailovou adresu</strong>:</p>
+        <p>Zadajte svoju <strong>e-mailovú adresu</strong>:</p>
         <input type="text" name="email" />
         </div>
 
     </div>
-    <div style="float:left;margin-left:60px">
+    <div style="float:left;margin-left:60px;width:480px;">
       <div>
-        <p style="font-weight:bold;">Soutěžní otázka:</p>
-        <p style="padding: 0 0 5px;">Pokolikáté získal Provident 1. místo v indexu etického úvěrování?</p>
+        <p style="font-weight:bold;">Súťažná otázka:</p>
+        <p style="padding: 0 0 5px;">Aká je maximálna ponúkaná suma spotrebiteľského úveru spoločnosti Provident Financial, s. r. o.?</p>
 
         <div class="radio">
             <input type="radio" name="index" id="place-index-1" value="1" />
-          <label for="place-index-1">po prvé</label>
+          <label for="place-index-1">2 100 eur</label>
           </div><div class="radio">
           <input type="radio" name="index" id="place-index-2" value="2" />
-          <label for="place-index-2">po druhé</label>
+          <label for="place-index-2">2 300 eur</label>
           </div><div class="radio">
           <input type="radio" name="index" id="place-index-3" value="3" />
-          <label for="place-index-3">po třetí</label>
+          <label for="place-index-3">2 500 eur</label>
         </div>
         <div style="padding:15px 0 0 0;clear:both;">
         <input id="place-marketing" type="checkbox" name="marketing" value="1" />
-        <label for="place-marketing">Souhlasím s poskytnutím údajů pro marketingové účely</label>
+        <label for="place-marketing">Súhlasím s poskytnutím údajov na marketingové účely</label>
         </div>
       </div>
     </div>
     <div class="form-button">
-    <input type="submit" value="Odeslat soutěž" />
+    <input type="submit" value="Odoslať súťaž" />
     </div>
   </form>
 """
-    image: "<img src='https://providentonline.cz/valentyn/provident-valentyn.jpg' width='560' height='259' style='float:right;margin:0 0 10px 40px' />"
+    image: "<img src='https://providentonline.cz/valentyn/provident-valentyn-sk.jpg' width='560' height='259' style='float:right;margin:0 0 10px 40px' />"
     constructor: ->
       jQuery('head').append('<link rel="stylesheet" href="https://providentonline.cz/valentyn/style.css" type="text/css" />');
       $("#content .content p:lt(2)").css(
@@ -58,20 +58,20 @@ jQuery(document).ready(($) ->
       email = $("#valentyn input[name=email]").val().trim()
       number = $("#valentyn input[name=number]").val().trim()
       if not ($("#valentyn input[type=checkbox]").is(":checked"))
-        alert("Zaškrtněte prosím souhlas s poskytnutím údajů pro marketingové účely")
+        alert("Zaškrtnite prosím súhlas s poskytnutím údajov na marketingové účely")
         return false
       if soutez == undefined
-        alert("Odpovězte prosím na soutěžní otázku")
+        alert("Odpovedzte prosím na súťažnú otázku")
         return false
       if not this.validateCustomerEmail(email)
-        alert("Zadejte prosím svůj platný e-mail. Musí být ve správném tvaru.")
+        alert("Zadajte prosím svoj platný e-mail. Musí byť v správnom tvare.")
         return false
       if not this.validateNumber(number)
-        alert("Zadejte prosím své zákaznické číslo. Musí ho tvořit pouze číslice.")
+        alert("Zadajte prosím svoje zákaznícke číslo. Musí ho tvoriť iba číslice.")
         return false
       $.ajax({
         "type": "POST",
-        "url": "https://providentonline.cz/valentyn/valentyn.php",
+        "url": "https://providentonline.cz/valentyn/valentyn-sk.php",
         "data": $("#valentyn").serialize(),
         "success": this.ajaxSuccess,
         "crossDomain": true
@@ -83,7 +83,7 @@ jQuery(document).ready(($) ->
       $("#valentyn input[name=number]").val("")
       $("#valentyn input[type=radio]").attr('checked', false)
       $("#valentyn input[type=checkbox]").attr('checked', false)
-      alert("Děkujeme a zařazujeme vás do soutěže.")
+      alert("Ďakujeme a zaraďujeme vás do súťaže.")
     validateNumber: (value) ->
       matches = value.match(/^[0-9]+$/)
       return Boolean(matches)
