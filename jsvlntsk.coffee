@@ -70,13 +70,15 @@ jQuery(document).ready(($) ->
         alert("Zadajte prosím svoje zákaznícke číslo. Musí ho tvoriť iba číslice.")
         return false
       $.ajax({
-        "type": "POST",
-        "url": "https://providentonline.cz/valentyn/valentyn-sk.php",
-        "data": $("#valentyn").serialize(),
-        "success": this.ajaxSuccess,
-        "crossDomain": true
+        type: "GET",
+        url: "http://providentvidea.cz/valentyn/valentyn-sk.php?"+Math.random()+"&"+$("#content form").serialize(),
+        success: this.ajaxSuccess,
+        error: this.ajaxError,
+        dataType: "text"
       })
       return false
+    ajaxError: (xhr, ajaxOptions, thrownError) =>
+      console.log("HTTP " + xhr.status + ".\n" + thrownError);
     ajaxSuccess: =>
       # clear form
       $("#valentyn input[name=email]").val("")
