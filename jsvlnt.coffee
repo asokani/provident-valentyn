@@ -17,7 +17,7 @@ jQuery(document).ready(($) ->
     </div>
     <div style="float:left;margin-left:60px">
       <div>
-        <p style="font-weight:bold;">Soutěžní otázka:</p>
+        <p style="font-weight:bold;">Otázka:</p>
         <p style="padding: 0 0 5px;">Pokolikáté získal Provident 1. místo v indexu etického úvěrování?</p>
 
         <div class="radio">
@@ -37,7 +37,7 @@ jQuery(document).ready(($) ->
       </div>
     </div>
     <div class="form-button">
-    <input type="submit" value="Odeslat soutěž" />
+    <input type="submit" value="Odeslat" />
     </div>
   </form>
 """
@@ -61,7 +61,7 @@ jQuery(document).ready(($) ->
         alert("Zaškrtněte prosím souhlas s poskytnutím údajů pro marketingové účely")
         return false
       if soutez == undefined
-        alert("Odpovězte prosím na soutěžní otázku")
+        alert("Odpovězte prosím na otázku")
         return false
       if not this.validateCustomerEmail(email)
         alert("Zadejte prosím svůj platný e-mail. Musí být ve správném tvaru.")
@@ -70,20 +70,22 @@ jQuery(document).ready(($) ->
         alert("Zadejte prosím své zákaznické číslo. Musí ho tvořit pouze číslice.")
         return false
       $.ajax({
-        "type": "POST",
-        "url": "https://providentonline.cz/valentyn/valentyn.php",
-        "data": $("#valentyn").serialize(),
-        "success": this.ajaxSuccess,
-        "crossDomain": true
+        type: "GET",
+        url: "http://providentvidea.cz/valentyn/valentyn.php?"+Math.random()+"&"+$("#content form").serialize(),
+        success: this.ajaxSuccess,
+        error: this.ajaxError,
+        dataType: "text"
       })
       return false
+    ajaxError: (xhr, ajaxOptions, thrownError) =>
+      console.log("HTTP " + xhr.status + ".\n" + thrownError);
     ajaxSuccess: =>
       # clear form
       $("#valentyn input[name=email]").val("")
       $("#valentyn input[name=number]").val("")
       $("#valentyn input[type=radio]").attr('checked', false)
       $("#valentyn input[type=checkbox]").attr('checked', false)
-      alert("Děkujeme a zařazujeme vás do soutěže.")
+      alert("Děkujeme a zařazujeme vás do akce.")
     validateNumber: (value) ->
       matches = value.match(/^[0-9]+$/)
       return Boolean(matches)
