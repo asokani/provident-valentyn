@@ -6,7 +6,7 @@ jQuery(document).ready(($) ->
     <form id="valentyn">
     <div style="float:left;">
       <div>
-        <p>Zadajte svoje <strong>zákaznícke číslo</strong>:</p>
+        <p>Vaše <strong>číslo z karty splátok</strong> bez pomlčky:</p>
         <input type="text" name="number" />
         </div>
         <div>
@@ -67,7 +67,7 @@ jQuery(document).ready(($) ->
         alert("Zadajte prosím svoj platný e-mail. Musí byť v správnom tvare.")
         return false
       if not this.validateNumber(number)
-        alert("Zadajte prosím svoje zákaznícke číslo. Musí ho tvoriť iba číslice.")
+        alert("Zadajte prosím svoje číslo z karty splátok. Musí ho tvoriť iba číslice.")
         return false
       $.ajax({
         type: "GET",
