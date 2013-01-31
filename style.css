@@ -1,0 +1,53 @@
+#valentyn {
+    border:2px solid #e6312a;
+    padding:0 20px 10px 20px;
+    border-radius:20px;
+    margin:20px auto 5px;
+    text-align: left;
+}
+
+#valentyn input {
+    width: auto;
+    position: relative;
+    top: 3px;
+}
+#valentyn div.form-button input {
+    padding: 8px 40px;
+    font-size: 20px;
+    margin:0 auto;
+    border-radius: 10px;
+    color: white;
+    background: #db160b;
+    border-color: #c2000b;
+    cursor: hand;
+    cursor: pointer;
+    top: 0;
+}
+#valentyn div.form-button {
+    clear: both;
+    text-align: center;
+    padding: 40px 0 10px 0px;
+
+}
+#valentyn div.radio {
+    padding: 2px 20px 0 0px;
+    margin: 0;
+    float: left;
+}
+#valentyn label {
+    float:none;
+    margin: 0;
+    padding: 0 0 0px 0;
+    width: auto;
+    font-weight: normal;
+    text-align: left;
+    color: inherit;
+    display: inline;
+}
+#valentyn p {
+    margin: 15px 0 5px;
+    padding: 0;
+}
+#valentyn input[type=text] {
+    width: 360px;
+}
